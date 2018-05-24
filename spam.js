@@ -9,10 +9,12 @@ fs.readFileSync('spam.csv')
         let category = getCategory(line);
         console.log(category);
 
-        line = line.substring(category.length + 1)
-        console.log(line.split(" "));
+        line = line.substring(category.length + 1);
+        let words = line.split(/[\.,"' ]+/g); 
+        let lowerCaseWords = words.map((w) => w.toLowerCase());
+        let cleanWords = lowerCaseWords.filter((w) => w != '');
+        console.log(cleanWords);
+        
     });
 
-
-//let parseLine = (line) => ({ category: 'spam', text: ''}) //substring
-//console.log(anyString.substring(5, 0));
+// See https://regexr.com/ to debug regular expressions
